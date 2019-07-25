@@ -139,35 +139,35 @@ public class ChainedOptional<T> {
 	@SuppressWarnings("nls")
 	public static void main(String[] args) {
 		ChainedOptional.of(1)
-    .map(s -> s + 1)
-    .map("hw", s -> "hello world")
-    // .map(s -> (String) null)
-    .map("lgth", String::length)
-    .filter((intermediates, val) -> (int)intermediates.get("lgth") == 11)
-    .map((intermediates, val) -> val + 1 + (int)intermediates.get("lgth"))
-    .ifPresent((intermediates, result) -> {
-        System.out.println(intermediates);
-        System.out.println("Result: " + intermediates.get("hw") + " is of length:" + intermediates.get("lgth"));
-    })
-    .orElseThrow(intermediates -> {
-        System.err.println(intermediates);
-        return new NoSuchElementException();
-    });
+		.map(s -> s + 1)
+		.map("hw", s -> "hello world")
+		// .map(s -> (String) null)
+		.map("lgth", String::length)
+		.filter((intermediates, val) -> (int)intermediates.get("lgth") == 11)
+		.map((intermediates, val) -> val + 1 + (int)intermediates.get("lgth"))
+		.ifPresent((intermediates, result) -> {
+				System.out.println(intermediates);
+				System.out.println("Result: " + intermediates.get("hw") + " is of length:" + intermediates.get("lgth"));
+		})
+		.orElseThrow(intermediates -> {
+				System.err.println(intermediates);
+				return new NoSuchElementException();
+		});
 		
 		String str = ChainedOptional.of(1)
-    .map(s -> s + 1)
-    .map("hw", s -> "hello world")
-    .map(s -> (String) null)
-//    .map("lgth", String::length)
-    .map((intermediates, val) -> val + 1 + (int)intermediates.get("lgth"))
-    .ifPresent((intermediates, result) -> {
-        System.out.println(intermediates);
-        System.out.println("Result: " + intermediates.get("hw") + " is of length:" + intermediates.get("lgth"));
-    })
-    .orElseGet(intermediates -> {
-        System.err.println(intermediates);
-        return (String)intermediates.get("hw");
-    });
+		.map(s -> s + 1)
+		.map("hw", s -> "hello world")
+		.map(s -> (String) null)
+//		.map("lgth", String::length)
+		.map((intermediates, val) -> val + 1 + (int)intermediates.get("lgth"))
+		.ifPresent((intermediates, result) -> {
+				System.out.println(intermediates);
+				System.out.println("Result: " + intermediates.get("hw") + " is of length:" + intermediates.get("lgth"));
+		})
+		.orElseGet(intermediates -> {
+				System.err.println(intermediates);
+				return (String)intermediates.get("hw");
+		});
 		System.out.println("str =" + str);
 	}
 }
