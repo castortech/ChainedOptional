@@ -110,6 +110,10 @@ public class ChainedOptional<T> {
 		return this;
 	}
 	
+	public T orElse(T other) {
+		return delegate.orElse(other);
+	}
+
 	public T orElseGet(Supplier<? extends T> supplier) {
 		return delegate.orElseGet(supplier);
 	}
